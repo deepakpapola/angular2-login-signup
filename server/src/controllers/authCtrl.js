@@ -9,35 +9,6 @@ import configAuth from './../config/auth'
 
 
 
-// function a(a,b,done){
-//     console.log(a,b);
-//     a.findFromDb((res,error)=>{
-//         if(error){
-//             done({success:false,error:error},null)
-//         }else{
-//             done(null,{success:true,data:data})
-//         }
-        
-        
-//     })
-    
-// }
-
-// a('aki value', 'b ki value', function(error,data){
-//     console.log(error); console.log(data);
-// })
-
-
-
-
-
-
-
-
-
-
-
-
 module.exports = {
         
     login : (req,res) =>{
