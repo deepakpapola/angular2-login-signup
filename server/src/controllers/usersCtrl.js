@@ -5,7 +5,7 @@ import User from './../models/users/user'
 module.exports = {
     //get all users
 
-    getUsers: (req,res) => { // console.log('get all users func');
+    getUsers: (req,res) => {
         User.find({},'name email ._id date',(err,users) => {
             if(err)
                 return done(err)
