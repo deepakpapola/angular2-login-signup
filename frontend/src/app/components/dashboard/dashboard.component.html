@@ -1,0 +1,86 @@
+<div class="container">
+  <h3>Users</h3><hr>
+
+</div>
+<div class="form-group row">
+  <div class="col-lg-10">
+    <input type="text" (keyup)="0" #searchInput class="form-control" placeholder="Search By Name...">
+  </div>
+  <button class="addBtn" id="openModal" #openModal data-toggle="modal" data-target="#addEditModel">
+      <div class="eff-4"></div>
+      <span>Add User</span>
+    </button>
+  </div><hr>
+
+ 
+<table class="table">
+  <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Joined</th>
+      <th>Action</th>
+  </tr>
+  <tr *ngFor="let user of users;  let i = index">   <!-- (users | filter:searchInput.value); -->
+    <td>{{i + 1}}</td>
+    <td>
+      {{user.name}}
+    </td>
+    <td>
+      {{user.email}}
+    </td>
+    <td>
+      {{user.date  | date }}
+    </td>
+    <td> <!--  edit and delete -->
+      <button (click)="editDiv(user)" #openModal data-toggle="modal" data-target="#addEditModel"  ><span class="fa fa-pencil fa-lg" aria-hidden="true" ></span></button>&nbsp;
+      <span class="fa fa-trash-o fa-lg" aria-hidden="true" [ngStyle]="{'color':'red'}" mwlConfirmationPopover title="It will be remove" message="Are you sure?" placement="top" cancelText="No" confirmText="Yes" (confirm)="delete(user._id);" (cancel)="cancelClicked = true"></span>&nbsp;
+    
+    </td>
+  </tr>
+</table>
+  
+  <!-- add edit Modal -->
+<div class="modal fade" id="addEditModel" #content tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="addEditModel">Add/Edit User</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form name="form" #f="ngForm" >
+          
+          <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !name.valid }">
+              <label for="name">Name</label>
+              <input type="text" class="form-control" name="name" [(ngModel)]="newUser.name" #name="ngModel" required />
+              <div *ngIf=" name.touched && !name.valid" class="help-block">Name is required</div>
+          </div>
+          <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
+              <label for="email">Email</label>
+              <input type="email" class="form-control" name="email" [(ngModel)]="newUser.email" #email="ngModel" required />
+              <div *ngIf="email.touched && !email.valid" class="help-block">Email is required</div>
+          </div>
+          <div class="form-group">
+            <label for="date">Join date</label>
+            <ng2-datepicker [options]="options" [(ngModel)]="newUser.date" name="date" required></ng2-datepicker>
+        </div>
+
+          <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" name="password" [(ngModel)]="newUser.password" #password="ngModel" required />
+            <div *ngIf="password.touched && !password.valid" class="help-block">Password is required</div>
+        </div>
+          <hr>
+          <div class="form-group">
+              <button type="submit" class="btn btn-succeess" (click)="f.form.valid && add(newUser)" *ngIf="!editing">Add</button>
+              <button class="btn btn-succeess" *ngIf="editing" (click)="f.form.valid && update(newUser)">Save</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Cencel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
