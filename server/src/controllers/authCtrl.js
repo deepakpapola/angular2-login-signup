@@ -1,13 +1,10 @@
 import { Strategy as FacebookStrategy } from 'passport-facebook';
 
+
 import jwt from 'jsonwebtoken';
 
 import User from './../models/users/user'
 import config from './../config/config'
-
-import configAuth from './../config/auth'
-
-
 
 module.exports = {
         
@@ -47,60 +44,5 @@ module.exports = {
             res.send(content);
 
         })
-    },
-    // ==========================================facebook login ====================
-
-    facebook: (passport) =>{
-        
-        // used to serialize the user for the session
-        passport.serializeUser((user, done)=> {
-            done(null, user.id);
-        });
-        
-
-        // used to deserialize the user
-        passport.deserializeUser((id, done)=> {
-            User.findById(id,(err, user) =>{
-                done(err, user);
-            });
-        });
-        // FACEBOOK ================================================================
-        passport.use(new FacebookStrategy({
-            clientID        : configAuth.facebookAuth.clientID,
-            clientSecret    : configAuth.facebookAuth.clientSecret,
-            callbackURL     : configAuth.facebookAuth.callbackURL,
-            passReqToCallback : true
-
-        },
-
-        (token, refreshToken, profile, done) =>{
-
-            process.nextTick(() =>{
-
-                User.findOne({ 'facebook.id' : profile.id },(err, user) =>{
-
-                    if (err)
-                        return done(err);
-
-                    if (user) {
-                        return done(null, user); 
-                    } else {
-                        var newUser            = new User();
-
-                        newUser.facebook.id    = profile.id;                 
-                        newUser.facebook.token = token; console.log(profile);
-                        newUser.facebook.name  = profile.displayName;
-                        newUser.facebook.email = profile.emails[0].value; 
-
-                        // save
-                        newUser.save((err) =>{
-                            if (err)
-                                throw err;
-                            return done(null, newUser);
-                        });
-                    }
-                });
-            });
-        }))
     }
 }

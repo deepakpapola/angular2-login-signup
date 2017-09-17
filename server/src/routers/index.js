@@ -4,19 +4,16 @@ import passport from 'passport';
 
 let router = express.Router();
 
-// router.get('/',(req,res) => {
-//     res.send('routs sldfjsljdflk');
-// });
 // verify token
 import authCtrl from './../controllers/authCtrl';
 
 router.get('/users',userCtrl.getUsers);
 router.get('/check-state', auth.verifyToken,(req, res) => {
-    
+    console.log("herer12")
     let content = {
         success: true,
         message: 'Successfully logged in'
-    }
+    };
     res.send(content);
     
 });
@@ -24,19 +21,24 @@ router.get('/check-state', auth.verifyToken,(req, res) => {
 router.post('/api/authenticate',authCtrl.login);
 
 import userCtrl from './../controllers/usersCtrl';
-router.put('/users/edit/:id',userCtrl.editUser);
+router.put('/users/edit',userCtrl.editUser);
 router.post('/users/add',userCtrl.addUser);
-router.delete('/users/delete/:id',userCtrl.delete);
+router.delete('/users/delete/:id',userCtrl.delete); 
 
  // FACEBOOK =====================
- //authCtrl.facebook(passport);
- router.get('/auth/facebook', passport.authenticate('facebook', { scope: [ 'email' ] }));
+ router.get('/auth/facebook', passport.authenticate('facebook', { scope : ['email'] }));
 
-// handle the callback after facebook has authenticated the user
 router.get('/auth/facebook/callback',
     passport.authenticate('facebook', {
-        successRedirect : '/dashboard',
-        failureRedirect : '/'
+        successRedirect : '/',
+        failureRedirect : '/login'
     }));
+
+//GOOGLE LOGIN
+router.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
+router.get('/auth/google/callback',passport.authenticate('google',{
+    successRedirect:'/',
+    failureRedirect:'/login'
+}));
 
 module.exports = router;

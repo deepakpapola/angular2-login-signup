@@ -4,6 +4,8 @@ import jwt from 'jsonwebtoken';
 module.exports = {
 
     verifyToken: ( (req, res, next) => {
+        console.log("here varigy token");
+        console.log("this is token", req.headers['x-access-token']);
         let token = req.body.token || req.query.token || req.headers['x-access-token'];
 
         if( token ) {

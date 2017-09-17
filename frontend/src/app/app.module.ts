@@ -1,3 +1,5 @@
+import { RegisterComponent } from './register (removed)/register.component';
+import { WeatherService } from './services/weather.service';
 import { MapwheatherModule } from './mapwheather/mapwheather.module';
 import { LstorageService } from './services/lstorage.service';
 import { PagerService } from './services/pager.service';
@@ -41,6 +43,7 @@ import { FilterPipe } from './pipes/filter.pipe';
     DetailsComponent,
     NavigationComponent,
     DashboardComponent,
+    RegisterComponent,
     FilterPipe
   ],
   imports: [
@@ -68,6 +71,7 @@ import { FilterPipe } from './pipes/filter.pipe';
     UserService,
     PagerService,
     LstorageService,
+    WeatherService
   ],
   bootstrap: [AppComponent]
 })

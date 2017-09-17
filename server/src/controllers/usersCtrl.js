@@ -3,7 +3,6 @@ import jwt from 'jsonwebtoken';
 import User from './../models/users/user'
 
 module.exports = {
-    //get all users
 
     getUsers: (req,res) => {
         User.find({},'name email ._id date',(err,users) => {
@@ -42,7 +41,7 @@ module.exports = {
                         let content = {
                             success:true,
                             message:'New user created'
-                        };console.log('added');
+                        };console.log('added',newUser);
                         res.send(content);
                         return;
                     })
@@ -52,9 +51,9 @@ module.exports = {
     },
 
     //edit user
-    editUser: (req,res) =>  {
-        let id = req.params.id; console.log('edit=========',req.body);
-        User.findByIdAndUpdate({id},{$set:req.body},(err, result) => {
+    editUser: (req,res) =>  { 
+        User.findByIdAndUpdate({_id :req.body._id},{$set:req.body},(err, result) => {
+            //console.log("heehehehheheheheheh",result);
             if(err)
                 throw(err);
             let content = {

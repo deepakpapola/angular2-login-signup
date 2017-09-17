@@ -8,10 +8,13 @@ import jwt from 'jsonwebtoken';
 import passport from 'passport';
 import config from './config/config';
 import routes from './routers/index';
-import authCtrl from './controllers/authCtrl';
+import passportAuth from './config/passport';
+//import authCtrl from './controllers/authCtrl';
+// import es6Promise from 'es6-promise';
+// mongoose.Promise = es6Promise.Promise;
 
-authCtrl.facebook(passport);
-
+//authCtrl.facebook(passport);
+passportAuth(passport);
 let app = express();
 
 var port     = process.env.PORT || 3000;

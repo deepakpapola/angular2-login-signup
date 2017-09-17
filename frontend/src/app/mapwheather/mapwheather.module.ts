@@ -10,7 +10,7 @@ import { WeatherComponent } from './weather/weather.component';
   imports: [
     CommonModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyBdQKusbI0-5J2T2tNQbsNBehZgGnJMzVI',
+      apiKey: 'AIzaSyCwCfo7AMsqCX7dWAuTo7UNHScX61emK6o',
       libraries: ["places"]
     }),
     FormsModule,

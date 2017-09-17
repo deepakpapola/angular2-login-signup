@@ -5,25 +5,24 @@ var userSchema = mongoose.Schema({
 
     name:String,
     email:{
-        type:String,
-        required:true,
+        type : String,
         unique:true
     },
-    date: Date,
-    password:String,
+    date: {type : Date},
+    password: {type :String},
 
     facebook:{
-        id: String,
-        name: String,
-        name: String,
-        email:String
+        id: {type :String},
+        token:{type :String},
+        name: {type :String},
+        email:{type :String}
 
     },
     google:{
-        id: String,
-        name: String,
-        name: String,
-        email:String
+        id: {type :String},
+        token:{type :String},
+        name: {type :String},
+        email:{type :String}
     }
     
 });

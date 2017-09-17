@@ -13,9 +13,6 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor( private authService: AuthenticationService) { }
 
   ngOnInit() {
-
-    //example of verification
-    //this.authService.Verify().subscribe( () => null);
   }
 
   ngOnDestroy() {

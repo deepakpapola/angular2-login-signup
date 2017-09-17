@@ -56,10 +56,9 @@ export class DashboardComponent implements OnInit {
   }
 
   update(user) { 
-    let id= user._id;// console.log(id);
     let joindate = user.date.momentObj;
     user.date = joindate;
-    this.UserService.update(user,id).subscribe((data) => {
+    this.UserService.update(user).subscribe((data) => {
     
       if( data['success'] == true ) {
         this.alert.success(data['message']);

@@ -29,8 +29,8 @@ export class UserService {
     let url = `${this.baseUrl}/users/delete/${id}`;
     return this.http.delete(url);
   }
-  update(user: User, id:string ){ 
-    let url = `${this.baseUrl}/users/edit/${id}`;
+  update(user: User ){ 
+    let url = `${this.baseUrl}/users/edit`;
     // console.log(data);
     return this.http.put(url, user)
       .map(data => data.json());;
