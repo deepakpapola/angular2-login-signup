@@ -1,3 +1,2 @@
-server/node_module
-frontend/node_module
-server/src/config
+node_module
+server/config
