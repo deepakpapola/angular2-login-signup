@@ -1,0 +1,20 @@
+<div >
+  <div class="dropdown">
+    <button class="pull-right fa fa-cog fa-lg" type="button" data-toggle="dropdown" >&nbsp; </button>
+    <div class="dropdown-menu pull-right" aria-labelledby="dropdownMenuButton">
+      <a class="dropdown-item fa fa-user fa-lg" [routerLink]="['']">&nbsp; Profile</a>
+      <a class="dropdown-item fa fa-sign-out fa-lg" [routerLink]="['/login']">&nbsp; Logout</a>
+    </div>
+  </div>
+
+
+  <div id="mySidenav" class="sidenav">
+    <a class="nav-link" id="details" [routerLink]="['']" routerLinkActive="active">Details</a>
+    <a class="nav-link" id="projects" [routerLink]="['/map']" routerLinkActive="active">Map</a>
+
+    <a class="nav-link" id="dashboard" [routerLink]="['/dashboard']" routerLinkActive="active">Dashboard</a>
+    <a class="nav-link" id="contact" routerLinkActive="active">Contact</a>
+  </div>
+</div>
+
+<!-- <a [routerLink]="['/login']">Logout</a></p> --> 
