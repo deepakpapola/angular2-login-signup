@@ -1453,6 +1453,7 @@ var UserService = (function () {
     };
     // add new employe
     UserService.prototype.addUser = function (user) {
+        console.log('user', user);
         return this.http.post(this.baseUrl + "/users/add", user)
             .map(function (data) { return data.json(); });
     };

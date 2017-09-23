@@ -14,14 +14,14 @@ module.exports = {
         })
     },
     //add user
-    addUser : (req,res) => {
+    addUser : (req,res) => { console.log(req.body);
         let {email,name,password,date} = req.body;
  
 
         process.nextTick(() => {
             User.findOne({'email':email},(err,user) =>{
                 if(err)
-                    return done(err);
+                    throw err;
                 if(user){
                     let content = {
                         success:false,
@@ -54,7 +54,7 @@ module.exports = {
     //edit user
     editUser: (req,res) =>  {
         let id = req.params.id; console.log('edit=========',req.body);
-        User.findByIdAndUpdate({id},{$set:req.body},(err, result) => {
+        User.findByIdAndUpdate({_id : id},{$set:req.body},(err, result) => {
             if(err)
                 throw(err);
             let content = {

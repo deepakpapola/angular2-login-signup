@@ -18,7 +18,7 @@ export class UserService {
   }
   // add new employe
   addUser(user:User) {
-    
+    console.log('user',user);
    return this.http.post(`${this.baseUrl}/users/add`, user)
      .map(data => data.json());
   }

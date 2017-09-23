@@ -9,7 +9,7 @@ var userSchema = mongoose.Schema({
         required:true,
         unique:true
     },
-    date: Date,
+    date: {type:Date,default: Date.now},
     password:String,
 
     facebook:{
