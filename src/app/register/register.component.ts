@@ -26,10 +26,10 @@ export class RegisterComponent implements OnInit {
       }
     }
 
-  register(){
-    // console.log('cked');
+  register(model){
+    console.log('restes');
       this.loading = true;
-      this.userService.addUser(this.model)
+      this.userService.addUser(model)
       .subscribe(data => {
         this.alertService.success('Registration successful', true);
         this.router.navigate(['/login']);
