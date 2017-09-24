@@ -14,6 +14,8 @@ authCtrl.facebook(passport);
 
 let app = express();
 
+
+
 var port     = process.env.PORT || 3000;
 // connect mongoose to database
 mongoose.connect(config.database);
@@ -28,6 +30,8 @@ app.use(BodyParser.json());
 app.use(express.static(path.join(__dirname,'./dist')));
 
 app.use('/',routes);
+
+
 
 app.get('*',(req,res) => {
     res.sendFile(path.join(__dirname,'./dist/index.html'));
