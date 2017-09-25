@@ -4,7 +4,7 @@ version: '2' # specify docker-compose version
 services:
 
   xyz-app: #name of the first service
-    build: xyzapp # specify the directory of the Dockerfile
+    build: xyzapp #https://hub.docker.com/r/deepakdocker1234/angular2-login-signup/ # specify the directory of the Dockerfile
     ports:
       - "3000:3000" #specify ports forewarding
     links:
