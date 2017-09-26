@@ -1,4 +1,4 @@
-import { RegisterComponent } from './register/register.component';
+import { RegisterComponent } from './register (removed)/register.component';
 import { NgModule }             from '@angular/core';
 
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -10,9 +10,9 @@ import { RouterModule, Routes } from '@angular/router';
 const appRoutes: Routes = [
     { path : '', component: DetailsComponent, canActivate: [AuthGuard]},
     { path : 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] }, // , canActivate: [AuthGuard] 
-
+    
+    { path : 'register', component:RegisterComponent},
     { path : 'login', component: LoginComponent},
-    { path : 'register', component: RegisterComponent},
     { path : '**', redirectTo: ''},
     { path: 'map', redirectTo: 'map', pathMatch: 'full'}
 ];

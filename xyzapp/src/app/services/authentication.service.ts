@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { User } from '../models';
 import { Observable, Subject } from 'rxjs/Rx';
 import { Headers, Http, RequestOptions, Response } from '@angular/http';
@@ -11,7 +12,7 @@ export class AuthenticationService {
   private url ='http://localhost:3000/api/authenticate';
   private userSource = new Subject<User>();
   user$ = this.userSource.asObservable();
-  constructor( private http: Http) { }
+  constructor( private http: Http, private router : Router ) { }
   
   setUser(user:User){
     this.userSource.next(user);
@@ -26,12 +27,15 @@ export class AuthenticationService {
     localStorage.removeItem('currentUser');
   }
 
-  Verify():Observable<Object> {
+  Verify():Promise<any> {
     let currUser = JSON.parse(localStorage.getItem('currentUser')); 
+    //if(!currUser){ this.router.navigate(['login']) }
     let token = ( currUser && 'token' in currUser) ? currUser.token : this.token;
     let headers = new Headers({ 'x-access-token': token });
     let options = new RequestOptions({ headers: headers });
-    return this.http.get(`${this.url}/check-state`, options).map( res => this.parseRes(res) );
+    return this.http.get(`http://localhost:3000/check-state`, options)
+    .toPromise()
+    .then(res => {return  res.json()} )
   }
 
   setToken(res) {
@@ -48,8 +52,8 @@ export class AuthenticationService {
     return body;
   }
 
-  parseRes(res){
-    let body = JSON.parse(res['_body']);
-    return body;
-  }
+  // parseRes(res){
+  //   let body = JSON.parse(res['_body']);
+  //   return body;
+  // }
 }

@@ -14,9 +14,8 @@ export class MapdetailComponent implements OnInit {
   public lat: number = 30.704649;
   public lng: number = 76.717873;
   public zoom: number;
-  private appid: string ="b03ac95cbab8aff86a736ae5f64ebda4";
   weather:any;
-  temprature:any;
+  temprature:any; 
   city:string;
   
   @ViewChild("search")

@@ -3,6 +3,7 @@ import { User } from '../models';
 import { Headers, Http, RequestOptions, Response } from '@angular/http';
 import { Injectable } from '@angular/core';
 
+import { Observable }     from 'rxjs/observable';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
@@ -18,7 +19,7 @@ export class UserService {
   }
   // add new employe
   addUser(user:User) {
-    console.log('user',user);
+    
    return this.http.post(`${this.baseUrl}/users/add`, user)
      .map(data => data.json());
   }
@@ -28,8 +29,8 @@ export class UserService {
     let url = `${this.baseUrl}/users/delete/${id}`;
     return this.http.delete(url);
   }
-  update(user: User, id:string ){ 
-    let url = `${this.baseUrl}/users/edit/${id}`;
+  update(user: User ){ 
+    let url = `${this.baseUrl}/users/edit`;
     // console.log(data);
     return this.http.put(url, user)
       .map(data => data.json());;
