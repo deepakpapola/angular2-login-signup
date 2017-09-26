@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon bin/dev",
+    "start": "node bin/dev",
     "clean": "del -rf dist",
     "build": "npm run clean && mkdir dist && babel src -s -d dist",
     "production": "npm run build && node bin/production",
