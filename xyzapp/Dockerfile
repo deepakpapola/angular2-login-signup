@@ -5,7 +5,7 @@ FROM node:6
 RUN mkdir -p /usr/src/app
 
 # use nodemon for development
-RUN npm install --global nodemon
+# RUN npm install --global nodemon
 
 # Change directory so that our commands run inside this new dir
 WORKDIR /usr/src/app
