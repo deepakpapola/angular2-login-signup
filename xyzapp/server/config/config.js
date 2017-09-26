@@ -1,4 +1,4 @@
 module.exports = {
-    'database':'mongodb://localhost:27017/xyzapp',
+    'database':'mongodb://database/xyzapp',
     'secret': process.env.jwtToken
 }
