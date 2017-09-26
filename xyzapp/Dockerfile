@@ -7,11 +7,6 @@ RUN mkdir -p /usr/src/app
 # use nodemon for development
 # RUN npm install --global nodemon
 
-RUN apt-get update 
-#RUN apt-get install -y mongodb-org
-    #for aws 
-RUN apt-get install -y mongodb-org git python build-essential curl
-RUN service mongod start
 
 RUN mkdir -p /data/db
 
