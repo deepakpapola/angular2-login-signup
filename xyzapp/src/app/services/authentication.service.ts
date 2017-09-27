@@ -9,7 +9,7 @@ import 'rxjs/add/operator/map';
 export class AuthenticationService {
   
   token: string;
-  private url ='http://localhost:3000/api/authenticate';
+  private url ='http://database:3000/api/authenticate';
   private userSource = new Subject<User>();
   user$ = this.userSource.asObservable();
   constructor( private http: Http, private router : Router ) { }
@@ -33,7 +33,7 @@ export class AuthenticationService {
     let token = ( currUser && 'token' in currUser) ? currUser.token : this.token;
     let headers = new Headers({ 'x-access-token': token });
     let options = new RequestOptions({ headers: headers });
-    return this.http.get(`http://localhost:3000/check-state`, options)
+    return this.http.get(`http://database:3000/check-state`, options)
     .toPromise()
     .then(res => {return  res.json()} )
   }

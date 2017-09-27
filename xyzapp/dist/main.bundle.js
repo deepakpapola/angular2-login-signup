@@ -1268,7 +1268,7 @@ var AuthenticationService = (function () {
     function AuthenticationService(http, router) {
         this.http = http;
         this.router = router;
-        this.url = 'http://localhost:3000/api/authenticate';
+        this.url = 'http://database:3000/api/authenticate';
         this.userSource = new __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["Subject"]();
         this.user$ = this.userSource.asObservable();
     }
@@ -1290,7 +1290,7 @@ var AuthenticationService = (function () {
         var token = (currUser && 'token' in currUser) ? currUser.token : this.token;
         var headers = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Headers */]({ 'x-access-token': token });
         var options = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["d" /* RequestOptions */]({ headers: headers });
-        return this.http.get("http://localhost:3000/check-state", options)
+        return this.http.get("http://database:3000/check-state", options)
             .toPromise()
             .then(function (res) { return res.json(); });
     };
@@ -1479,7 +1479,7 @@ var UserService = (function () {
     function UserService(http, router) {
         this.http = http;
         this.router = router;
-        this.baseUrl = 'http://localhost:3000';
+        this.baseUrl = 'http://database:3000';
         this.headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
     }
     UserService.prototype.getUsers = function () {

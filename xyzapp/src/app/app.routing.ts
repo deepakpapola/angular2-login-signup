@@ -14,7 +14,7 @@ const appRoutes: Routes = [
     { path : 'register', component:RegisterComponent},
     { path : 'login', component: LoginComponent},
     { path : '**', redirectTo: ''},
-    { path: 'map', redirectTo: 'map', pathMatch: 'full'}
+    { path: 'map', redirectTo: 'map', pathMatch: 'full', canActivate: [AuthGuard] }
 ];
 
 // export const routing = RouterModule.forRoot(appRoutes);
