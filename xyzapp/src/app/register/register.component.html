@@ -9,7 +9,7 @@
       </div>
       <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
           <label for="email">email</label>
-          <input type="email" class="form-control" name="email" [(ngModel)]="model.email" #username="ngModel" required />
+          <input type="email" class="form-control" name="email" [(ngModel)]="model.email" #username="ngModel" required email/>
           <div *ngIf="f.submitted && !username.valid" class="help-block">email is required</div>
       </div>
       <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">

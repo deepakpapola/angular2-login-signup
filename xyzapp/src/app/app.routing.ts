@@ -1,4 +1,4 @@
-import { RegisterComponent } from './register (removed)/register.component';
+import { RegisterComponent } from './register/register.component';
 import { NgModule }             from '@angular/core';
 
 import { DashboardComponent } from './components/dashboard/dashboard.component';

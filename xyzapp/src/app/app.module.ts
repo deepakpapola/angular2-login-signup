@@ -1,4 +1,4 @@
-import { RegisterComponent } from './register (removed)/register.component';
+import { RegisterComponent } from './register/register.component';
 import { WeatherService } from './services/weather.service';
 import { MapwheatherModule } from './mapwheather/mapwheather.module';
 import { LstorageService } from './services/lstorage.service';
