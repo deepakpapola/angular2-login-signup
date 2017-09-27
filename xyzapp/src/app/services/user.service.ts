@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class UserService {
-  private baseUrl= 'http://database:3000';
+  private baseUrl= 'http://54.183.91.21:3000';
   private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor(private http: Http, private router: Router) {  }
