@@ -1,7 +1,7 @@
 <p> You are logged in !</p>
 
 <div class="col-md-6 col-md-offset-3">
-  <h1>Hi {{currentUser?.name}}!</h1>
+  <h1>Hi {{currentUser?.name}}</h1>
   
   <p><a [routerLink]="['/login']">Logout</a></p>
 </div>
@@ -10,7 +10,7 @@
 <article>
   <div class="date">
     <span class="temp">{{temp}}°c</span>
-    <span class="city">{{weather.name}}</span>
+    <span class="city">{{weather?.name}}</span>
   </div>
 <ul>
   <li>Wind {{wind}} m/s</li>

@@ -11,15 +11,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailsComponent implements OnInit {
   
-  private lat:number;
-  private lng:number;
+  lat:number;
+  lng:number;
   currentUser: User;
-  private weather:{}={};
-  private temp:number;
-  private humidity:number;
-  private cloud:number;
-  private wind:number;
-  private sky:number;
+  weather:any;
+  temp:number;
+  humidity:number;
+  cloud:number;
+  wind:number;
+  sky:number;
 
   constructor(private weatherService:WeatherService, private http:Http) {
 

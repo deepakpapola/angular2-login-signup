@@ -18,8 +18,7 @@ export class MapdetailComponent implements OnInit {
   temprature:any; 
   city:string;
   
-  @ViewChild("search")
-  public searchElementRef: ElementRef;
+  @ViewChild("search") public searchElementRef: ElementRef;
 
   constructor(
     private mapsAPILoader: MapsAPILoader,
